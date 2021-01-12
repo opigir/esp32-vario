@@ -103,19 +103,19 @@ void VarioAudio::VarioBeep(int32_t nCps) {
                 SetFrequency(freqHz_);
                 }
             }
-         else   // in "lifty-air" band, indicate with a ticking sound with longer interval
-         if (varioCps_ >= liftyAirToneCps_) {
-		
-            varioState_ = VARIO_STATE_LIFTY_AIR;
-    		beepCps_ = varioCps_;
-    		tick_ = 0;
-    		beepPeriodTicks_ = 30;
-    		beepEndTick_ = 2;
-    		newFreqHz = VARIO_TICK_FREQHZ + (beepCps_*(VARIO_XOVER_FREQHZ - VARIO_TICK_FREQHZ))/VARIO_XOVER_CPS;
-            CLAMP(newFreqHz,VARIO_TICK_FREQHZ,VARIO_MAX_FREQHZ);
-            freqHz_ = newFreqHz;
-    		SetFrequency(freqHz_);  // higher frequency as you approach climb threshold
-            }
+//         else   // in "lifty-air" band, indicate with a ticking sound with longer interval
+//         if (varioCps_ >= liftyAirToneCps_) {
+//		
+//            varioState_ = VARIO_STATE_LIFTY_AIR;
+//    		beepCps_ = varioCps_;
+//    		tick_ = 0;
+//    		beepPeriodTicks_ = 30; 
+//    		beepEndTick_ = 2; 
+//    		newFreqHz = VARIO_TICK_FREQHZ + (beepCps_*(VARIO_XOVER_FREQHZ - VARIO_TICK_FREQHZ))/VARIO_XOVER_CPS;
+//            CLAMP(newFreqHz,VARIO_TICK_FREQHZ,VARIO_MAX_FREQHZ);
+//            freqHz_ = newFreqHz;
+//    		SetFrequency(freqHz_);  // higher frequency as you approach climb threshold
+//            }
 
       // not sinking enough to trigger alarm,  be quiet
          else{
@@ -171,4 +171,3 @@ void VarioAudio::GenerateTone(int32_t fHz, int ms) {
     delay(ms);
     SetFrequency(0);
     }
-

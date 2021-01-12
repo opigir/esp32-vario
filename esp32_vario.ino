@@ -9,7 +9,7 @@
 //
 //The majortity of this code was some great work by Jeff Rowberg for the
 //mpu6050 library and the i2cdevlib interface, and Hari Nair for the Vario design. 
-//The calibration came from  Luis Ródenas.
+//The calibration came from  Luis Rï¿½denas.
 
 //I integrated Jeff's MPU6050 library to take advantage of the 6050 dmp processing which works fine
 //on esp8266 but a bit tempremental on esp32 as there are some issues with timing using Jeff's library 
@@ -101,9 +101,9 @@ int audiochannel = 0;
 
 int pinSDA = 21;
 int pinSCL = 22;
-int pinDRDYInt = 12;
+int pinDRDYInt = 19;
 int pinAudio = 13;
-int pinCalibBtn = 15;
+int pinCalibBtn = 0;
 
 
 volatile int drdyCounter;
@@ -382,9 +382,6 @@ float runningAverageofCps(float cps)
 
 }
 
-
-
-
 void setup() {
 
 	
@@ -451,7 +448,6 @@ void setup() {
 	Serial.printf("Accel : axBias %d, ayBias %d, azBias %d\r\n", ax_offset, ay_offset, az_offset);
 	Serial.printf("Gyro : gxBias %d, gyBias %d, gzBias %d\r\n", gx_offset, gy_offset, gz_offset);
 	Serial.printf("KfzVariance : %f, KfazVariance : %f \r\n", kfzVariance, kazVariance);
-
 
 	drdyCounter = 0;
 	drdyFlag = 0;
@@ -766,4 +762,3 @@ void loop() {
 		}		
 	}
 }
-
